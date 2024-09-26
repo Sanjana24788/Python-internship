@@ -1,9 +1,19 @@
 #minimum array sum
-n=int(input())
-lst=list(map(int,input().split()))
-lst.sort()
-a,b=lst[-1],lst[-2]
-avg=(a+b)/2
-for i in range(n):
-    if lst[i]:
-        
+def min_sum(arr):
+    arr.sort(reverse=True)
+    total = arr[0]
+    avg = arr[0]
+    
+    for i in range(1, len(arr)):
+        if arr[i] < avg:
+            break
+        total += arr[i]
+        avg = (total) / (i + 1)
+    
+    return total
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+result = min_sum(arr)
+print(result)
